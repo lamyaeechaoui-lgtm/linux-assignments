@@ -28,3 +28,30 @@ To add users to the sudo group, i used these two commands:
 sudo usermod -aG sudo tupu
 sudo usermod -aG sudo lupu
 <img width="867" height="49" alt="Screenshot 2026-01-30 030600" src="https://github.com/user-attachments/assets/bc375e97-0021-4acc-ade5-a7c4ee16c651" />
+### 5. Create Shared Directory with Permissions:
+
+#### Step 1: Create group:
+sudo groupadd projekti
+
+#### Step 2: Add users to group:
+sudo usermod -aG projekti tupu
+sudo usermod -aG projekti lupu
+
+#### Step 3: Create directory:
+sudo mkdir -p /opt/projekti
+
+#### Step 4: Change group ownership:
+sudo chown :projekti /opt/projekti
+
+#### Step 5: Set permissions:
+sudo chmod 770 /opt/projekti
+
+#### Step 6: Set setgid bit:
+sudo chmod g+s /opt/projekti
+
+
+-A group `projekti` was created for shared access.
+- Both users were added to this group.
+- The directory `/opt/projekti` was assigned to the group.
+- Permissions `770` allow only owner and group full access.
+- The **setgid bit** ensures new files inherit the group.
